@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de numero</title>
+</head>
+<style>
+    body {
+        background-color: rgba(60, 130, 223, 0.829);
+    }
+
+     h1, footer {
+        color: white;
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: 20px;
+        font-weight: bold;
+    }
+
+    p{
+        margin: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+
+    }
+
+    div {
+        width: 500px;
+        height: 500px;
+        background: white;
+        margin: auto;
+        padding: 10px;
+        text-align: left;
+        border-radius: 10px;
+
+    }
+
+    img {
+        width: 300px;
+        border-radius: 200px;
+    }
+
+    input {
+        margin: 10px;
+        padding-top: 4px;
+        font-family: Verdana, Tahoma, sans-serif;
+    }
+
+
+</style>
+<body>
+
+    <header>
+        <h1>Verificador de Numero</h1>
+    </header>
+
+    <Div>
+        <form>
+            <label for="numero">
+                Ano de nascimento:  <input id="numero" type="number" min="0">    
+            </label>
+
+            <br>
+
+            <label>
+                 Sexo: <input id="mas" name="radsex" type="radio" checked>Masculino
+                       <input id="fem" name="radsex" type="radio">Feminino
+            </label>
+
+            <br>
+
+            <input onclick="clicar()" type="button" value="verificar">
+                
+        </form>
+
+        <section id="ras">
+            <p id="texto">Prencha os dados para ver o resultado</p>
+        </section>
+        
+    </Div>
+
+    <footer>
+        @CursoemVideo
+    </footer>
+
+    <script>
+
+        function clicar() {
+            var data = new Date()
+            var ano = data.getFullYear()
+            var year = document.getElementById('numero')
+            var res = document.getElementById('ras')
+
+            if (year.value.length == 0 || Number(year.value) > ano) {
+                window.alert('[ERRO], tente novamente ')
+            } else {
+                var fsex = document.getElementsByName('radsex')
+                var idade = ano - Number(year.value)
+                var genero = ''
+                var img = document.createElement('img')
+                img.setAttribute('id', 'foto')  
+            
+                    if (fsex[0].checked) {
+                        genero = 'Homem'
+                        if (idade >=0 && idade < 12) {
+                            img.setAttribute('src', 'foto-bebe-m.png')
+                        }   else if (idade < 21) {
+                            img.setAttribute('src', 'foto-jovem-m.png')
+                        }   else if (idade < 50) {
+                            img.setAttribute('src', 'foto-adulto-m.png')
+                        }   else {
+                            img.setAttribute('src', 'foto-idoso-m.png')
+                        }   
+
+                    }   else if (fsex[1].checked) {
+                        genero = 'Mulher'
+
+                        if (idade >=0 && idade < 12) {
+                            img.setAttribute('src', 'foto-bebe-f.png')
+                        }   else if (idade < 21) {
+                            img.setAttribute('src', 'foto-jovem-f.png')
+                        }   else if (idade < 50) {
+                            img.setAttribute('src', 'foto-adulto-f.png')
+                        }   else {
+                            img.setAttribute('src', 'foto-idoso-f.png')
+                        } 
+                    } 
+
+                res.style.textAlign ='center'
+                res.innerHTML = 'Detectamos ' + genero + ' com ' + idade + ' anos.'
+                res.appendChild(img)
+                    
+            }
+        }    
+
+    </script>
+</body>
+</html>

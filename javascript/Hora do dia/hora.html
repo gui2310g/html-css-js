@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que horas são?</title>
+</head>
+<style>
+
+    body {
+        background-color: #0a101a04;
+    }
+    h1, footer {
+        color: white;
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: 20px;
+        font-weight: bold;
+    }
+
+    p{
+        margin: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+
+    }
+
+    div {
+        width: 500px;
+        height: 500px;
+        background: white;
+        margin: auto;
+        padding: 3px;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 300px;
+        height: 300px;
+        border-radius: 200px;
+    }
+</style>
+<body onload="horario()">
+    <main>
+        <header><h1>Hora do dia</h1></header>   
+
+            <div>
+                <p id="hora">Agora são 9 horas</p>
+
+                <img id="imagem" src="Amanhecer01.jpg" alt="">
+
+        
+            </div>
+
+        <footer>@CursoemVideo</footer>
+    </main>
+
+    <script>
+        function horario() {
+
+            var hora = new Date()
+            var hour = hora.getHours()
+        
+            var texto = window.document.getElementById('hora')
+            var image = window.document.getElementById('imagem')    
+
+
+            texto.innerHTML = "Agora são " + hour + " horas"
+            if (hour >= 0 && hour < 12) {
+                image.src ="Amanhecer01.jpg"
+                document.body.style.background = "#3d86f5"
+
+            } else if (hour >= 12 && hour < 18) {
+                image.src ="tarde.jpg"
+                document.body.style.background = "orange"
+            } else {
+                image.src ="noite.webp"
+                document.body.style.background = "black"
+            }
+    
+            
+            
+        }
+       
+
+
+    </script>
+</body>
+</html>
