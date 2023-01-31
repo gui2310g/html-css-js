@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>teste</title>
+</head>
+<style>
+   body {
+      margin: 0;
+      padding: 0;
+      background: #d9d9d9;
+   }
+
+   div {
+      margin: 20px;
+      background: #2E2E2E;
+      display: inline-block;
+      width: 300px;
+      height: 425px;
+      border-radius: 20px;
+      box-shadow: 0px 0px 2px 1px rgb(0, 0, 0, 2);
+   }
+
+   input {
+      width: 230px;
+      height: 40px;
+      margin: 30px 25px;
+      border-radius: 10px;
+      background: #E9ECEF;
+      box-shadow: 2px black;
+      text-align: right;
+   }
+
+   button {
+      width: 60px;
+      height: 50px;
+      border-radius: 10px;
+      margin-left: 7px;
+      background: #343A40;
+      color: white;
+   }
+   
+   
+   .btg {
+      width: 132px;
+      margin-bottom: 3px;
+   }
+
+   .btb {
+      height: 112px;
+      margin-left: 12px;
+      position: absolute;
+   }
+   
+   .btm {
+      margin-bottom: 10px;
+   }
+
+   button:hover {
+      background:#23272B;
+   }
+
+</style>
+<Body>
+   <div>
+      <form>
+         <Input type="text" id="resultado" disabled="disabled" placeholder='0' readonly value="0">
+         <br>
+         <button onclick="calcular('acao', 'c')" type="button" class="btg">C</button>
+         <button onclick="calcular('acao', '/')" type="button" class="btm">/</button>
+         <button onclick="calcular('acao', '*')" type="button" class="btm">x</button>
+         <Br>
+         <button onclick="calcular('valor', 7)" type="button" class="btm">7</button>
+         <button onclick="calcular('valor', 8)" type="button" class="btm">8</button>
+         <button onclick="calcular('valor', 9)" type="button" class="btm">9</button>
+         <button onclick="calcular('acao', '-')" type="button" class="btm">-</button>
+         <Br>
+         <button onclick="calcular('valor', 4)" type="button" class="btm">4</button>
+         <button onclick="calcular('valor', 5)" type="button" class="btm">5</button>
+         <button onclick="calcular('valor', 6)" type="button" class="btm">6</button>
+         <button onclick="calcular('acao', '+')" type="button" class="btm">+</button> 
+         <br> 
+         <button onclick="calcular('valor', 1)" type="button" class="btm">1</button>
+         <button onclick="calcular('valor', 2)" type="button" class="btm">2</button>
+         <button onclick="calcular('valor', 3)" type="button" class="btm">3</button>
+         <button onclick="calcular('acao', '=')" type="button" class="btb">=</button>
+         <br>
+         <button onclick="calcular('valor', 0)" type="button" class="btg">0</button>
+         <button onclick="calcular('acao', '.')" type="button"class="btm">.</button>
+   
+      </form>
+   </div>
+
+<script>
+     function calcular(tipo, valor){
+        if(tipo === 'acao') {
+          if(valor === 'c'){
+            //limpar o visor
+            document.getElementById('resultado').value = ''
+          }
+          if(valor === '+' || valor === '-' || valor === '*' || valor === '/' || valor === '.'){
+            document.getElementById('resultado').value += valor
+          }
+          if(valor === '=') {
+            var valor_campo = eval(document.getElementById('resultado').value)
+            document.getElementById('resultado').value = valor_campo
+          }
+        } else if (tipo === 'valor') {
+
+          document.getElementById('resultado').value += valor
+        }
+      }
+
+</script>
+</body>
+</html>
